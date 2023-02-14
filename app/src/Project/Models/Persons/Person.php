@@ -65,6 +65,24 @@ class Person extends ActiveRecordEntity
         return $person;
     }
 
+    public function updateFromArray(array $fields): Person
+    {
+        if (empty($fields['name'])) {
+            throw new InvalidArgumentException('Не передано имя');
+        }
+
+        if (empty($fields['age'])) {
+            throw new InvalidArgumentException('Не передан возраст');
+        }
+
+        $this->setName($fields['name']);
+        $this->setAge($fields['age']);
+
+        $this->save();
+
+        return $this;
+
+    }
 
 
     protected static function getTableName(): string

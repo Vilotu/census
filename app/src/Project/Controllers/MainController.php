@@ -28,8 +28,6 @@ class MainController extends AbstractController
     }
 
 
-
-
     public function create(): void
     {
 
@@ -47,6 +45,40 @@ class MainController extends AbstractController
         $this->view->renderHtml('main/main.php');
     }
 
+    public function edit(int $personId)
+    {
+        $person = Person::getById($personId);
+
+        if (!empty($_POST)) {
+            try {
+                $person->updateFromArray($_POST);
+            } catch (InvalidArgumentException $e) {
+                $this->view->renderHtml('main/edit', ['error' => $e->getMessage(), 'person' => $person]);
+                return;
+            }
+
+            header('Location: /', true,302);
+            exit();
+        }
+
+
+        $this->view->renderHtml('main/edit.php', [
+            'person' => $person
+        ]);
+
+    }
+
+    public function delete(int $personId): void
+    {
+        $person = Person::getById($personId);
+
+        if ($person) {
+            $person->delete();
+            header('Location: /', true, 302);
+            exit();
+        }
+        $this->view->renderHtml('main/main.php');
+    }
 
 
 }

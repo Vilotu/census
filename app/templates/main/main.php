@@ -54,6 +54,8 @@
                 <li>
                     <?= $person->getName() ?>
                     <?= $person->getAge() ?>
+                    <a href="person/<?= $person->getId() ?>/edit">✎</a>
+                    <a href="person/<?= $person->getId() ?>/delete">&#10060;</a>
                 </li>
             </ul>
 
