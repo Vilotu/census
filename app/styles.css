@@ -1,0 +1,47 @@
+
+.layout {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 20px;
+    background-color: white;
+    border-collapse: collapse;
+}
+
+.layout tr td {
+    padding: 20px;
+    vertical-align: top;
+    border: solid 1px gray;
+}
+
+.header {
+    font-size: 30px;
+}
+
+.footer {
+}
+
+
+a, a:visited {
+    text-decoration: none;
+    color: darkgreen;
+}
+
+li {
+    display: inline;
+}
+
+.parent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.inner-left {
+    width: 300px;
+    text-align: left;
+}
+.inner-right {
+    text-align: right;
+    flex-basis: 250px;
+    flex-grow: 1;
+}
